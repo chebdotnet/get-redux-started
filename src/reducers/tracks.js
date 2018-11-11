@@ -1,8 +1,8 @@
-const initialState = [
-    "People are strange",
-    "Alabama song ",
-    "Riders on the storm"
-  ];
+ const initialState = [
+   {id:'1541964705353', name:"People are strange"},
+   {id:'1541964705354', name:"Alabama song"},
+   {id:'1541964705355', name:"Riders on the storm"}
+ ]
 
 export default function tracks(state = initialState, action){
   console.log(action);

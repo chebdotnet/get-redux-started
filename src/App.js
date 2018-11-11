@@ -16,7 +16,7 @@
          <input type="text" className="trackInput" ref={(input) => {this.trackInput = input; }}/>
          <button onClick={this.addTrack.bind(this)} className="addTrack">Add track</button>
          <ul className="list">
-         {this.props.testStore.map((track, index) =>
+         {this.props.tracks.map((track, index) =>
            <li key={index}>{track}</li>
          )}
          </ul>
@@ -27,7 +27,7 @@
 
 export default connect(
   state => ({
-    testStore: state
+    tracks: state.tracks
   }),
   dispatch => ({
     onAddTrack: (trackName) => {

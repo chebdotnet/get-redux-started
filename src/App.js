@@ -1,24 +1,27 @@
-// import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-//
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           Get Redux Started
-//         </header>
-//       </div>
-//     );
-//   }
-// }
-//
-// export default App;
+ import React, { Component } from 'react';
+ import { connect } from 'react-redux'
+ import './App.css';
 
-import { createStore } from 'redux';
+ class App extends Component {
+   render() {
+     console.log(this.props.testStore);
+     return (
+       <div className="App">
+         <input type="text" className="trackInput" />
+         <button className="addTrack">Add track</button>
+         <ul className="list">
+         {this.props.testStore.map((track, index) =>
+           <li key={index}>{track}</li>
+         )}
+         </ul>
+       </div>
+     );
+   }
+ }
 
-function playlist(state = []){
-  return state;
-}
-const store = createStore(state);
+export default connect(
+  state => ({
+    testStore: state
+  }),
+  dispatch => ({})
+)(App);

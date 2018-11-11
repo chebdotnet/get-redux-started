@@ -1,8 +1,10 @@
  import React, { Component } from 'react';
  import { connect } from 'react-redux'
  import './App.css';
-  
-  import { getTracks } from './actions/tracks';
+
+import { getTracks } from './actions/tracks';
+
+import Menu from './Menu';
 
  class App extends Component {
    addTrack(){
@@ -17,11 +19,11 @@
       this.searchInput.value = '';
    }
 
-
    render() {
      console.log(this.props.testStore);
      return (
        <div className="App">
+        <Menu />
          <div>
            <input type="text" className="trackInput" ref={(input) => {this.trackInput = input; }}/>
            <button onClick={this.addTrack.bind(this)} className="addTrack">Add track</button>
@@ -44,8 +46,9 @@
  }
 
 export default connect(
-  state => ({
-    tracks: state.tracks.filter(track => track.name.includes(state.filterTracks))
+  (state, ownProps) => ({
+    tracks: state.tracks.filter(track => track.name.includes(state.filterTracks)),
+    ownProps
   }),
   dispatch => ({
     onAddTrack: (trackName) => {
